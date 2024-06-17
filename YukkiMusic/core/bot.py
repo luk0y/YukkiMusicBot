@@ -15,6 +15,21 @@ from pyrogram.types import BotCommand
 import config
 
 from ..logging import LOGGER
+import pyrogram.utils as utils
+
+
+def get_peer_type(peer_id: int) -> str:
+    print('get_peer_type call')
+    peer_id_str = str(peer_id)
+    if not peer_id_str.startswith("-"):
+        return "user"
+    elif peer_id_str.startswith("-100"):
+        return "channel"
+    else:
+        return "chat"
+
+
+utils.get_peer_type = get_peer_type
 
 
 class YukkiBot(Client):
@@ -32,9 +47,11 @@ class YukkiBot(Client):
         get_me = await self.get_me()
         self.username = get_me.username
         self.id = get_me.id
+        print(config.LOG_GROUP_ID)
         try:
+            await self.get_chat(config.LOG_GROUP_ID)
             await self.send_message(
-                config.LOG_GROUP_ID, "Bot Started"
+                int(config.LOG_GROUP_ID), "Bot Started"
             )
         except:
             LOGGER(__name__).error(
@@ -61,11 +78,12 @@ class YukkiBot(Client):
         else:
             pass
         a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
-        if a.status != "administrator":
-            LOGGER(__name__).error(
-                "Please promote Bot as Admin in Logger Group"
-            )
-            sys.exit()
+        print(a)
+        #if a.status != "administrator":
+        #    LOGGER(__name__).error(
+        #        "Please promote Bot as Admin in Logger Group"
+        #    )
+        #    sys.exit()
         if get_me.last_name:
             self.name = get_me.first_name + " " + get_me.last_name
         else:
