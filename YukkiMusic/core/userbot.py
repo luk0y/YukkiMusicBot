@@ -24,31 +24,31 @@ class Userbot(Client):
         self.one = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING1),
+            session_string=str(config.STRING1),
             no_updates=True,
         )
         self.two = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING2),
+            session_string=str(config.STRING2),
             no_updates=True,
         )
         self.three = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING3),
+            session_string=str(config.STRING3),
             no_updates=True,
         )
         self.four = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING4),
+            session_string=str(config.STRING4),
             no_updates=True,
         )
         self.five = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_name=str(config.STRING5),
+            session_string=str(config.STRING5),
             no_updates=True,
         )
 
@@ -56,12 +56,6 @@ class Userbot(Client):
         LOGGER(__name__).info(f"Starting Assistant Clients")
         if config.STRING1:
             await self.one.start()
-            try:
-                await self.one.join_chat("TeamYM")
-                await self.one.join_chat("TheYukki")
-                await self.one.join_chat("YukkiSupport")
-            except:
-                pass
             assistants.append(1)
             try:
                 await self.one.send_message(
@@ -87,12 +81,6 @@ class Userbot(Client):
             )
         if config.STRING2:
             await self.two.start()
-            try:
-                await self.two.join_chat("TeamYM")
-                await self.two.join_chat("TheYukki")
-                await self.two.join_chat("YukkiSupport")
-            except:
-                pass
             assistants.append(2)
             try:
                 await self.two.send_message(
@@ -117,13 +105,6 @@ class Userbot(Client):
                 f"Assistant Two Started as {self.two.name}"
             )
         if config.STRING3:
-            await self.three.start()
-            try:
-                await self.three.join_chat("TeamYM")
-                await self.three.join_chat("TheYukki")
-                await self.three.join_chat("YukkiSupport")
-            except:
-                pass
             assistants.append(3)
             try:
                 await self.three.send_message(
@@ -149,12 +130,6 @@ class Userbot(Client):
             )
         if config.STRING4:
             await self.four.start()
-            try:
-                await self.four.join_chat("TeamYM")
-                await self.four.join_chat("TheYukki")
-                await self.four.join_chat("YukkiSupport")
-            except:
-                pass
             assistants.append(4)
             try:
                 await self.four.send_message(
@@ -180,12 +155,6 @@ class Userbot(Client):
             )
         if config.STRING5:
             await self.five.start()
-            try:
-                await self.five.join_chat("TeamYM")
-                await self.five.join_chat("TheYukki")
-                await self.five.join_chat("YukkiSupport")
-            except:
-                pass
             assistants.append(5)
             try:
                 await self.five.send_message(
