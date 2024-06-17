@@ -28,9 +28,13 @@ AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
 @app.on_message(
     filters.command(AUTH_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
+
+@app.on_edited_message(filters.command(AUTH_COMMAND) & filters.group & ~BANNED_USERS)
+async def handle_edited_auth_command(client, message):
+    await message.reply_text("You edited an authorization command, but edits are not processed.")
+  
 @AdminActual
 async def auth(client, message: Message, _):
     if not message.reply_to_message:
@@ -95,7 +99,6 @@ async def auth(client, message: Message, _):
 @app.on_message(
     filters.command(UNAUTH_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @AdminActual
@@ -133,7 +136,6 @@ async def unauthusers(client, message: Message, _):
 @app.on_message(
     filters.command(AUTHUSERS_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @language
