@@ -25,30 +25,35 @@ class Userbot(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
+            name="SESSION_ONE",
             no_updates=True,
         )
         self.two = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING2),
+            name="SESSION_TWO",
             no_updates=True,
         )
         self.three = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING3),
+            name="SESSION_THREE",
             no_updates=True,
         )
         self.four = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING4),
+            name="SESSION_FOUR",
             no_updates=True,
         )
         self.five = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING5),
+            name="SESSION_FIVE",
             no_updates=True,
         )
 
